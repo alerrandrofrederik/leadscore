@@ -1,0 +1,13 @@
+# Job que atualiza o pipeline. Agenda diária às 7h (Fila do Dia pronta até 8h, PRD §2.8).
+# Em mode: development a agenda fica pausada.
+resources:
+  jobs:
+    lh_leadscore_refresh:
+      name: lh_leadscore_refresh
+      schedule:
+        quartz_cron_expression: "0 0 7 * * ?"
+        timezone_id: America/Sao_Paulo
+      tasks:
+        - task_key: refresh_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.lh_leadscore_pipeline.id}

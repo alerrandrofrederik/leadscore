@@ -15,9 +15,15 @@ artifacts:
 # Variable declarations. These variables are assigned in the dev/prod targets below.
 variables:
   catalog:
-    description: The catalog to use
+    description: Catálogo Unity Catalog do Lead Score
   schema:
-    description: The schema to use
+    description: Schema padrão do pipeline (as tabelas usam bronze/silver/gold explicitamente)
+  warehouse_id:
+    description: SQL warehouse usado pelo app e pelo Genie
+    default: 4c2bc55088722e76
+  genie_space_id:
+    description: ID do Genie Space do agente comercial (preenchido na T4.5)
+    default: ""
 
 targets:
   dev:
@@ -30,8 +36,8 @@ targets:
     workspace:
       host: https://dbc-be577084-5742.cloud.databricks.com?w=7474647553344962
     variables:
-      catalog: workspace
-      schema: ${workspace.current_user.short_name}
+      catalog: leadscore
+      schema: bronze
   prod:
     mode: production
     workspace:
@@ -39,8 +45,8 @@ targets:
       # We explicitly deploy to /Workspace/Users/leadscorews@gmail.com to make sure we only have a single copy.
       root_path: /Workspace/Users/leadscorews@gmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
-      catalog: workspace
-      schema: prod
+      catalog: leadscore
+      schema: bronze
     permissions:
       - user_name: leadscorews@gmail.com
         level: CAN_MANAGE

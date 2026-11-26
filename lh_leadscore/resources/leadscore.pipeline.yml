@@ -1,0 +1,17 @@
+# Pipeline Lakeflow (SQL) do Lead Score: Bronze → Silver → Gold.
+# As tabelas usam schemas explícitos (bronze./silver./gold.) dentro do catálogo ${var.catalog}.
+resources:
+  pipelines:
+    lh_leadscore_pipeline:
+      name: lh_leadscore_pipeline
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+      continuous: false
+      channel: current
+      root_path: ../src/pipeline
+      libraries:
+        - glob:
+            include: ../src/pipeline/**
+      configuration:
+        volume_raw: /Volumes/${var.catalog}/landing/raw
