@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Workshop "Lead Score": um pipeline no Databricks que prioriza 100 leads/dia para 20 vagas de contato, usando `ai_classify`/`ai_extract`, e entrega uma Fila do Dia + agente Genie num Databricks App. A especificação completa (requisitos RF-xx, critérios de aceite CA-xx, regra do score, modelo Gold) está em `PRD_leadscore.md`: **é a fonte da verdade**; leia antes de implementar qualquer camada.
 
+A implementação segue Spec Driven Development em `.llm/`: obedeça `.llm/constitution.md`, decisões técnicas em `.llm/plan.md`, tarefas por marco em `.llm/tasks/M0..M5_*.md`. Ao concluir uma tarefa, rode o bloco **Verificar**, registre a evidência e atualize o status.
+
 Estado atual: apenas o scaffold do template `default-python` do DABs (`src/lh_leadscore/` vazio, `resources/` vazio). Pipeline, app e Genie Space ainda serão construídos (marcos M0–M5 do PRD).
 
 ## Nomes do ambiente
