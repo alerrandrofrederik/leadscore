@@ -1,0 +1,23 @@
+# Data App do Lead Score (AppKit): Visão do Gestor, Fila do Dia e Agente (Genie). RF-13..RF-16.
+# Código em ../app; o build (npm install + npm run build) acontece no Databricks Apps durante o deploy.
+resources:
+  apps:
+    leadscore_app:
+      name: ${var.app_name}
+      description: "Lead Score · Fila do Dia e agente comercial (Atlas Software)"
+      source_code_path: ../app
+      lifecycle:
+        started: true
+      # Genie roda on-behalf-of do usuário conectado.
+      user_api_scopes:
+        - dashboards.genie
+      resources:
+        - name: sql-warehouse
+          sql_warehouse:
+            id: ${var.warehouse_id}
+            permission: CAN_USE
+        - name: genie-space
+          genie_space:
+            name: ${var.genie_space_name}
+            space_id: ${var.genie_space_id}
+            permission: CAN_RUN

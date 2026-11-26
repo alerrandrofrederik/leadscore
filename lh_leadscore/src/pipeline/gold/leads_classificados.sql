@@ -71,7 +71,7 @@ SELECT
         WHEN produto IS NOT NULL THEN concat('Interesse no ', produto, coalesce(concat(' até ', prazo), ''))
         WHEN prazo IS NOT NULL THEN concat('Prazo: ', prazo)
       END,
-      CASE WHEN porte <> 'desconhecido' THEN concat('empresa ', porte) END,
+      CASE porte WHEN 'grande' THEN 'empresa grande' WHEN 'médio' THEN 'empresa média' WHEN 'medio' THEN 'empresa média' WHEN 'pequeno' THEN 'empresa pequena' END,
       CASE WHEN orcamento_aprovado THEN 'orçamento aprovado' END,
       CASE WHEN ja_cliente THEN 'já é cliente' END,
       CASE WHEN concorrente_citado IS NOT NULL THEN concat('usa ', concorrente_citado) END

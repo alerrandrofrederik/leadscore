@@ -1,0 +1,31 @@
+@import "@databricks/appkit-ui/styles.css";
+
+/* Identidade Lead Score · Atlas Software (app_referencia/*.png): sidebar azul-marinho, ação primária azul.
+   Só tokens: os componentes usam bg-primary, bg-sidebar, text-success etc., nunca cores cruas. */
+:root {
+  --primary: oklch(0.55 0.2 260);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.55 0.2 260);
+  --sidebar: oklch(0.22 0.06 265);
+  --sidebar-foreground: oklch(0.93 0.01 265);
+  --sidebar-primary: oklch(0.65 0.17 240);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.3 0.06 265);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 12%);
+}
+
+/* O App sempre aplica .light ou .dark no <html> (ver useTema em App.tsx); :root.dark empata em
+   especificidade com o `:root:not(.light)` do AppKit e vem depois, então vence. */
+:root.dark {
+  --primary: oklch(0.65 0.17 255);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.65 0.17 255);
+  --sidebar: oklch(0.18 0.04 265);
+  --sidebar-foreground: oklch(0.93 0.01 265);
+  --sidebar-primary: oklch(0.65 0.17 240);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.27 0.05 265);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 12%);
+}

@@ -8,3 +8,10 @@ scratch/**
 !scratch/README.md
 **/explorations/**
 **/!explorations/README.md
+
+# Data App (AppKit)
+node_modules/
+app/client/dist/
+app/dist/
+app/.env
+app/.smoke-test/

@@ -1,0 +1,137 @@
+{
+  "version": 2,
+  "config": {
+    "sample_questions": [
+      {
+        "id": "01f10000000000000000000000000001",
+        "question": [
+          "Quantos leads de compra imediata chegaram hoje?"
+        ]
+      },
+      {
+        "id": "01f10000000000000000000000000002",
+        "question": [
+          "Qual canal trouxe mais leads de compra imediata?"
+        ]
+      },
+      {
+        "id": "01f10000000000000000000000000003",
+        "question": [
+          "Quais leads citaram concorrente?"
+        ]
+      },
+      {
+        "id": "01f10000000000000000000000000004",
+        "question": [
+          "Quantos leads da minha fila eu já contatei?"
+        ]
+      },
+      {
+        "id": "01f10000000000000000000000000005",
+        "question": [
+          "Quais leads de compra imediata ficaram fora da fila de hoje?"
+        ]
+      }
+    ]
+  },
+  "data_sources": {
+    "tables": [
+      {
+        "identifier": "leadscore.gold.feedback_contatos"
+      },
+      {
+        "identifier": "leadscore.gold.fila_do_dia"
+      },
+      {
+        "identifier": "leadscore.gold.leads_classificados"
+      }
+    ]
+  },
+  "instructions": {
+    "text_instructions": [
+      {
+        "id": "01f10000000000000000000000000006",
+        "content": [
+          "* Responda sempre em português do Brasil.\n",
+          "* \"Hoje\" ou \"do dia\" significa o dia do arquivo de leads mais recente: data_arquivo = (SELECT max(data_arquivo) FROM leadscore.gold.leads_classificados). Na fila, use a coluna data.\n",
+          "* Intenções possíveis (coluna intencao): compra_imediata, avaliando, suporte, spam. \"Compra imediata\" = intencao = 'compra_imediata'.\n",
+          "* leads_classificados tem todos os leads únicos do dia (um por e-mail). fila_do_dia tem os 20 leads priorizados, 5 por vendedor (Ana, Bruno, Carla, Diego).\n",
+          "* \"Ficou fora da fila\" = está em leads_classificados e o lead_id não está em fila_do_dia.\n",
+          "* Canais (coluna canal): site, linkedin, evento, indicacao, google_ads. Mostre indicacao como \"Indicação\" e linkedin como \"LinkedIn\".\n",
+          "* \"Citou concorrente\" = concorrente_citado IS NOT NULL.\n",
+          "* \"Contatado\" = existe registro em feedback_contatos para o lead_id. \"Minha fila\" se refere ao vendedor citado na pergunta; se não houver, agrupe por vendedor.\n",
+          "* lead_score vai de 0 a 100; score_componentes mostra intencao, perfil, sinais e recencia. Ao listar leads, traga nome, empresa, lead_score e motivo."
+        ]
+      }
+    ],
+    "example_question_sqls": [
+      {
+        "id": "01f10000000000000000000000000007",
+        "question": [
+          "Quantos leads de compra imediata chegaram hoje?"
+        ],
+        "sql": [
+          "SELECT count(*) AS leads_compra_imediata\n",
+          "FROM leadscore.gold.leads_classificados\n",
+          "WHERE intencao = 'compra_imediata'\n",
+          "  AND data_arquivo = (SELECT max(data_arquivo) FROM leadscore.gold.leads_classificados)"
+        ]
+      },
+      {
+        "id": "01f10000000000000000000000000008",
+        "question": [
+          "Qual canal trouxe mais leads de compra imediata?"
+        ],
+        "sql": [
+          "SELECT canal, count(*) AS leads_compra_imediata\n",
+          "FROM leadscore.gold.leads_classificados\n",
+          "WHERE intencao = 'compra_imediata'\n",
+          "  AND data_arquivo = (SELECT max(data_arquivo) FROM leadscore.gold.leads_classificados)\n",
+          "GROUP BY canal\n",
+          "ORDER BY leads_compra_imediata DESC"
+        ]
+      },
+      {
+        "id": "01f10000000000000000000000000009",
+        "question": [
+          "Quais leads citaram concorrente?"
+        ],
+        "sql": [
+          "SELECT nome, empresa, concorrente_citado, intencao, lead_score, motivo\n",
+          "FROM leadscore.gold.leads_classificados\n",
+          "WHERE concorrente_citado IS NOT NULL\n",
+          "ORDER BY lead_score DESC"
+        ]
+      },
+      {
+        "id": "01f1000000000000000000000000000a",
+        "question": [
+          "Quantos leads da minha fila eu já contatei?"
+        ],
+        "sql": [
+          "SELECT f.vendedor,\n",
+          "       count(*) AS leads_na_fila,\n",
+          "       count(DISTINCT fc.lead_id) AS contatados\n",
+          "FROM leadscore.gold.fila_do_dia f\n",
+          "LEFT JOIN leadscore.gold.feedback_contatos fc ON fc.lead_id = f.lead_id\n",
+          "GROUP BY f.vendedor\n",
+          "ORDER BY f.vendedor"
+        ]
+      },
+      {
+        "id": "01f1000000000000000000000000000b",
+        "question": [
+          "Quais leads de compra imediata ficaram fora da fila de hoje?"
+        ],
+        "sql": [
+          "SELECT c.nome, c.empresa, c.canal, c.lead_score, c.motivo\n",
+          "FROM leadscore.gold.leads_classificados c\n",
+          "WHERE c.intencao = 'compra_imediata'\n",
+          "  AND c.data_arquivo = (SELECT max(data_arquivo) FROM leadscore.gold.leads_classificados)\n",
+          "  AND c.lead_id NOT IN (SELECT lead_id FROM leadscore.gold.fila_do_dia)\n",
+          "ORDER BY c.lead_score DESC"
+        ]
+      }
+    ]
+  }
+}

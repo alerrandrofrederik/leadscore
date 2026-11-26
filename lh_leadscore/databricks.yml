@@ -22,8 +22,14 @@ variables:
     description: SQL warehouse usado pelo app e pelo Genie
     default: 4c2bc55088722e76
   genie_space_id:
-    description: ID do Genie Space do agente comercial (preenchido na T4.5)
-    default: ""
+    description: ID do Genie Space do agente comercial (criado na T4.5 por src/genie/gerar_space.py)
+    default: 01f1e9d8c6461adc876c8997ad891040
+  genie_space_name:
+    description: Nome do Genie Space
+    default: Lead Score · Agente Comercial
+  app_name:
+    description: Nome do Databricks App (minúsculas, números e hífens, até 30 caracteres)
+    default: leadscore-${workspace.current_user.domain_friendly_name}
 
 targets:
   dev:
@@ -47,6 +53,7 @@ targets:
     variables:
       catalog: leadscore
       schema: bronze
+      app_name: leadscore
     permissions:
       - user_name: leadscorews@gmail.com
         level: CAN_MANAGE
