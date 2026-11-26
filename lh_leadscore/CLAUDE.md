@@ -23,8 +23,9 @@ Estado atual: apenas o scaffold do template `default-python` do DABs (`src/lh_le
 
 ```bash
 uv sync --dev                                  # instala dependências (Python 3.12, databricks-connect 16.4)
-uv run pytest                                  # testes (via Databricks Connect, ver abaixo)
-uv run pytest tests/test_x.py::test_nome       # um teste
+DATABRICKS_CONFIG_PROFILE=leadscore uv run pytest                     # testes de aceite (CA-01..09) via Databricks Connect
+DATABRICKS_CONFIG_PROFILE=leadscore uv run pytest tests/test_aceite.py::test_ca07_entidades_do_heroi  # um teste
+databricks experimental aitools tools query --file src/sql/<arquivo>.sql --profile leadscore  # SQL avulso (1 statement ou bloco BEGIN/END)
 uv run ruff check . && uv run ruff format .    # lint/format (line-length 120)
 
 databricks bundle validate --profile leadscore
