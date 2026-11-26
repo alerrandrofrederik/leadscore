@@ -314,16 +314,16 @@
         </p>
         <div class="hero-meta">
           <div class="meta-item"><span class="meta-k">Duração</span><span class="meta-v">~50 min</span></div>
-          <div class="meta-item"><span class="meta-k">Ambiente</span><span class="meta-v">Databricks serverless · catálogo <code>lh_ensaio05</code></span></div>
+          <div class="meta-item"><span class="meta-k">Ambiente</span><span class="meta-v">Databricks serverless · catálogo <code>leadscore</code></span></div>
           <div class="meta-item"><span class="meta-k">Stack</span><span class="meta-v">Lakeflow · AI Functions · Genie · Apps</span></div>
           <div class="meta-item"><span class="meta-k">Entregável</span><span class="meta-v">Fila do Dia + agente no ar</span></div>
         </div>
         <div class="recursos" aria-label="Recursos">
-          <a href="https://lead-score-app-1835011522269435.aws.databricksapps.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://leadscore-leadscorews-7474647553344962.aws.databricksapps.com" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
             Data App publicado
           </a>
-          <a href="https://github.com/alerrandrofrederik/lakehouse_ensaio" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/alerrandrofrederik/leadscore" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
             Código do projeto
           </a>
@@ -510,17 +510,17 @@ irm https://claude.ai/install.ps1 | iex</code></pre>
         <p class="bloco-goal">Um perfil com nome, validado por uma chamada real de API.</p>
       </div>
 
-      <p>O host é a URL do workspace no navegador (<code>https://dbc-xxxxxxxx-xxxx.cloud.databricks.com</code>). Quando a CLI pedir o nome do perfil, use <strong><code>lead_score</code></strong>, não <code>DEFAULT</code>: passar o mesmo perfil em todo comando evita deploy no workspace errado.</p>
+      <p>O host é a URL do workspace no navegador (<code>https://dbc-xxxxxxxx-xxxx.cloud.databricks.com</code>). Quando a CLI pedir o nome do perfil, use <strong><code>leadscore</code></strong>, não <code>DEFAULT</code>: passar o mesmo perfil em todo comando evita deploy no workspace errado.</p>
 
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal · troque pelo seu host</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>databricks auth login --host https://SEU-WORKSPACE.cloud.databricks.com --profile lead_score</code></pre>
+        <pre><code>databricks auth login --host https://SEU-WORKSPACE.cloud.databricks.com --profile leadscore</code></pre>
       </div>
 
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal · conferir</span><button class="copy" type="button">copiar</button></div>
         <pre><code>databricks auth profiles
-databricks current-user me --profile lead_score</code></pre>
+databricks current-user me --profile leadscore</code></pre>
       </div>
 
       <p><code>current-user me</code> faz uma chamada de verdade à API: se ele responde, o login vale.</p>
@@ -545,7 +545,7 @@ databricks current-user me --profile lead_score</code></pre>
           <thead><tr><th>Pergunta</th><th>Resposta</th></tr></thead>
           <tbody>
             <tr><td>What would you like to do?</td><td>Create a new repository on GitHub from scratch</td></tr>
-            <tr><td>Repository name</td><td><code>lakehouse_ensaio</code></td></tr>
+            <tr><td>Repository name</td><td><code>leadscore</code></td></tr>
             <tr><td>Description</td><td>Lead Score no Databricks: medalhão, IA no SQL, Genie e Data App para priorizar os 20 leads do dia.</td></tr>
             <tr><td>Visibility</td><td>Public ou Private</td></tr>
             <tr><td>Clone locally?</td><td>Yes</td></tr>
@@ -555,7 +555,7 @@ databricks current-user me --profile lead_score</code></pre>
 
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>cd lakehouse_ensaio
+        <pre><code>cd leadscore
 
 # a descrição e os tópicos são o que aparece na busca e no card do link
 gh repo edit --description "Lead Score no Databricks: medalhão, IA no SQL, Genie e Data App para priorizar os 20 leads do dia."
@@ -575,8 +575,8 @@ gh repo edit --add-topic databricks,lakehouse,claude-code,engenharia-de-dados,ge
       <p>Um <strong>bundle</strong> declara em YAML tudo o que o projeto publica no workspace (pipeline, jobs, app). O <code>deploy</code> calcula a diferença e aplica só o que mudou.</p>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">terminal · dentro de lakehouse_ensaio</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>databricks bundle init --profile lead_score</code></pre>
+        <div class="code-head"><span class="code-tag">terminal · dentro de leadscore</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>databricks bundle init --profile leadscore</code></pre>
       </div>
 
       <div class="tabela-wrap">
@@ -584,30 +584,30 @@ gh repo edit --add-topic databricks,lakehouse,claude-code,engenharia-de-dados,ge
           <thead><tr><th>Pergunta do wizard</th><th>Resposta</th><th>Por quê</th></tr></thead>
           <tbody>
             <tr><td>Template</td><td><code>default-python</code></td><td>Já traz <code>src/</code>, <code>resources/</code>, <code>tests/</code> e o pacote Python</td></tr>
-            <tr><td>Project name</td><td><code>lh_ensaio</code></td><td>Vira a pasta e o nome do bundle; é o mesmo nome do catálogo</td></tr>
+            <tr><td>Project name</td><td><code>lh_leadscore</code></td><td>Vira a pasta e o nome do bundle; o catálogo se chama <code>leadscore</code></td></tr>
             <tr><td>Stub notebook</td><td>no</td><td>O código de verdade vem depois</td></tr>
             <tr><td>Stub pipeline</td><td>no</td><td>O pipeline do Lead Score é escrito do zero</td></tr>
             <tr><td>Stub Python package</td><td>yes</td><td>Estrutura de biblioteca e testes</td></tr>
             <tr><td>Use serverless</td><td>yes</td><td>Sem cluster para gerenciar</td></tr>
-            <tr><td>Default catalog</td><td><code>workspace</code> (Enter)</td><td>O catálogo <code>lh_ensaio</code> ainda não existe; trocar depois é uma linha</td></tr>
+            <tr><td>Default catalog</td><td><code>workspace</code> (Enter)</td><td>O catálogo <code>leadscore</code> ainda não existe; trocar depois é uma linha</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>cd lh_ensaio</code></pre>
+        <pre><code>cd lh_leadscore</code></pre>
       </div>
 
-      <h3>O arquivo que o wizard escreveu</h3>
+      <h3>O databricks.yml, depois de ajustado para o projeto</h3>
       <div class="code">
-        <div class="code-head"><span class="code-tag">databricks.yml · recém-gerado</span><button class="copy" type="button">copiar</button></div>
+        <div class="code-head"><span class="code-tag">databricks.yml</span><button class="copy" type="button">copiar</button></div>
         <pre><code>bundle:
-  name: lh_ensaio
-  uuid: bdc71a5b-...           # gerado uma vez; nunca copie entre repositórios
+  name: lh_leadscore
+  uuid: 55837461-...           # gerado uma vez; nunca copie entre repositórios
 
 include:
-  - resources/*.yml            # um .yml por recurso: schemas, volumes, pipeline, app
+  - resources/*.yml            # pipeline, job e app (um .yml por recurso)
 
 artifacts:
   python_artifact:
@@ -615,10 +615,11 @@ artifacts:
     build: uv build --wheel
 
 variables:
-  catalog:
-    description: The catalog to use
-  schema:
-    description: The schema to use
+  catalog:        { description: Catálogo Unity Catalog do Lead Score }
+  schema:         { description: Schema padrão do pipeline }
+  warehouse_id:   { description: SQL warehouse do app e do Genie, default: SEU-WAREHOUSE-ID }
+  genie_space_id: { description: Genie Space do agente comercial, default: SEU-SPACE-ID }
+  app_name:       { description: Nome do Databricks App, default: "leadscore-${workspace.current_user.domain_friendly_name}" }
 
 targets:
   dev:
@@ -627,16 +628,17 @@ targets:
     workspace:
       host: https://SEU-WORKSPACE.cloud.databricks.com
     variables:
-      catalog: workspace       # depois: lh_ensaio
-      schema: ${workspace.current_user.short_name}
+      catalog: leadscore       # o wizard gerou "workspace"
+      schema: bronze
   prod:
     mode: production
     workspace:
       host: https://SEU-WORKSPACE.cloud.databricks.com
       root_path: /Workspace/Users/SEU-EMAIL/.bundle/${bundle.name}/${bundle.target}
     variables:
-      catalog: workspace       # depois: lh_ensaio
-      schema: prod
+      catalog: leadscore
+      schema: bronze
+      app_name: leadscore
     permissions:
       - user_name: SEU-EMAIL
         level: CAN_MANAGE</code></pre>
@@ -654,19 +656,19 @@ targets:
         </table>
       </div>
 
-      <p>Por isso o deploy da estrutura do Lead Score usa <code>-t prod</code>: os schemas saem com o nome exato (<code>bronze</code>, <code>silver</code>, <code>gold</code>).</p>
+      <p>Por isso o Lead Score trabalha no target <code>dev</code> e cria <strong>catálogo, schemas e volumes por SQL</strong> (<code>src/sql/setup_ambiente.sql</code>), fora do bundle: os nomes saem exatos (<code>bronze</code>, <code>silver</code>, <code>gold</code>). O bundle fica com o que é código: pipeline, job e app.</p>
 
       <h3>O ciclo, do init ao deploy</h3>
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal · o ciclo de trabalho</span><button class="copy" type="button">copiar</button></div>
         <pre><code># 1. confere a sintaxe e resolve as variáveis, sem tocar no workspace
-databricks bundle validate -t prod --profile lead_score
+databricks bundle validate --strict --profile leadscore
 # 2. constrói o wheel, sobe os arquivos e cria ou atualiza os recursos
-databricks bundle deploy -t prod --profile lead_score
+databricks bundle deploy --profile leadscore
 # 3. executa um recurso pela chave dele no YAML
-databricks bundle run lead_score_pipeline -t prod --profile lead_score
+databricks bundle run lh_leadscore_pipeline --profile leadscore
 # o que existe lá, sem abrir a interface
-databricks bundle summary -t prod --profile lead_score</code></pre>
+databricks bundle summary --profile leadscore</code></pre>
       </div>
 
       <aside class="fala">
@@ -687,7 +689,7 @@ databricks bundle summary -t prod --profile lead_score</code></pre>
       <p>O template pede Python <strong>3.12</strong> (<code>databricks-connect</code> ainda não tem versão para 3.13). O <code>--seed</code> coloca o <code>pip</code> dentro do venv.</p>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">terminal · dentro de lh_ensaio</span><button class="copy" type="button">copiar</button></div>
+        <div class="code-head"><span class="code-tag">terminal · dentro de lh_leadscore</span><button class="copy" type="button">copiar</button></div>
         <pre><code>uv python pin 3.12
 uv venv --seed
 uv sync --dev</code></pre>
@@ -720,7 +722,7 @@ git push</code></pre>
           <thead><tr><th>Pergunta</th><th>Resposta</th></tr></thead>
           <tbody>
             <tr><td>Quais agentes</td><td>Claude Code</td></tr>
-            <tr><td>Profile</td><td><code>lead_score</code></td></tr>
+            <tr><td>Profile</td><td><code>leadscore</code></td></tr>
             <tr><td>Escopo</td><td>global (vale para todo projeto na máquina)</td></tr>
             <tr><td>Grupos de skills</td><td>todos</td></tr>
             <tr><td>Limpar instalação antiga</td><td>sim (o padrão)</td></tr>
@@ -737,12 +739,12 @@ git push</code></pre>
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal · ai tools</span><button class="copy" type="button">copiar</button></div>
         <pre><code># consulta direta: acha o warehouse sozinho
-databricks experimental aitools tools query --profile lead_score \
+databricks experimental aitools tools query --profile leadscore \
   "SELECT current_catalog(), current_user()"
 
 # conhecer uma tabela: colunas, tipos, amostra, nulos e contagem
 databricks experimental aitools tools discover-schema \
-  lh_ensaio.gold.fila_do_dia --profile lead_score</code></pre>
+  leadscore.gold.fila_do_dia --profile leadscore</code></pre>
       </div>
 
       <aside class="fala">
@@ -769,7 +771,7 @@ databricks experimental aitools tools discover-schema \
           <div class="no gold"><b>Gold</b><small>IA + nota + fila</small></div><span class="seta">→</span>
           <div class="no uso"><b>Genie + App</b><small>fila do dia e agente</small></div>
         </div>
-        <figcaption>Um pipeline Lakeflow serverless (<code>lh_ensaio05_pipeline</code>), governado pelo Unity Catalog, catálogo <code>lh_ensaio05</code>.</figcaption>
+        <figcaption>Um pipeline Lakeflow serverless em SQL (<code>lh_leadscore_pipeline</code>), governado pelo Unity Catalog, catálogo <code>leadscore</code>.</figcaption>
       </figure>
 
       <div class="camadas">
@@ -810,27 +812,40 @@ databricks experimental aitools tools discover-schema \
       </div>
 
       <ul class="aceite">
-        <li><code>bash scripts/preflight.sh</code> termina em <strong>PRE-FLIGHT OK</strong> (catálogo, volumes, empresas, histórico, gabarito e grants do app).</li>
+        <li>Ambiente pronto: catálogo, schemas e volumes, funções de CNPJ, empresas, histórico e gabarito no Volume, tabela de feedback e grants do app (comandos abaixo, todos idempotentes).</li>
         <li>SQL Warehouse <strong>Serverless Starter Warehouse</strong> ligado (sem cold start na frente da turma).</li>
-        <li>App <code>lead-score-app</code> aberto e <strong>consentimento OAuth aceito</strong> (o agente roda com as suas permissões).</li>
+        <li>App <code>leadscore-leadscorews</code> aberto e <strong>consentimento OAuth aceito</strong> (o agente roda com as suas permissões).</li>
         <li><code>gold.feedback_contatos</code> vazia, para o “marcar como contatado” começar do zero.</li>
-        <li>Abas abertas: este roteiro · Catalog Explorer em <code>lh_ensaio05</code> · grafo do pipeline · SQL Editor · app.</li>
+        <li>Abas abertas: este roteiro · Catalog Explorer em <code>leadscore</code> · grafo do <code>lh_leadscore_pipeline</code> · SQL Editor · app.</li>
         <li>Notas desligadas (<kbd>n</kbd>) se for compartilhar esta página na tela.</li>
       </ul>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">terminal · ambiente pronto</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>bash scripts/preflight.sh</code></pre>
+        <div class="code-head"><span class="code-tag">terminal · ambiente pronto · dentro de lh_leadscore</span><button class="copy" type="button">copiar</button></div>
+        <pre><code># catálogo, schemas, volumes e funções de CNPJ (BEGIN … END: a CLI roda 1 statement por chamada)
+databricks experimental aitools tools query --file src/sql/setup_ambiente.sql --profile leadscore
+databricks experimental aitools tools query --file src/sql/udf_cnpj.sql --profile leadscore
+
+# dados de apoio (os leads sobem ao vivo)
+databricks fs cp data/lead_score_dados/raw/empresas/empresas_2026-11-23.csv dbfs:/Volumes/leadscore/landing/raw/empresas/ --profile leadscore
+databricks fs cp data/lead_score_dados/raw/historico/oportunidades_2026-11-23.csv dbfs:/Volumes/leadscore/landing/raw/historico/ --profile leadscore
+databricks fs cp data/lead_score_dados/gabarito/intencao.csv dbfs:/Volumes/leadscore/landing/gabarito/ --profile leadscore
+databricks fs cp data/lead_score_dados/gabarito/entidades.csv dbfs:/Volumes/leadscore/landing/gabarito/ --profile leadscore
+
+# pipeline, job e app publicados; tabela de feedback; permissões do app
+databricks bundle deploy --profile leadscore
+databricks experimental aitools tools query --file src/sql/feedback_contatos.sql --profile leadscore
+databricks experimental aitools tools query --file src/sql/grants_app.sql --param app_sp=&lt;client-id-do-app&gt; --profile leadscore</code></pre>
       </div>
 
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal · ligar o warehouse</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>databricks warehouses start a50e6a998ebe9440 --profile lead_score</code></pre>
+        <pre><code>databricks warehouses start 4c2bc55088722e76 --profile leadscore</code></pre>
       </div>
 
       <div class="code">
         <div class="code-head"><span class="code-tag">sql · zerar o feedback da demo</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>DELETE FROM lh_ensaio05.gold.feedback_contatos;</code></pre>
+        <pre><code>DELETE FROM leadscore.gold.feedback_contatos;</code></pre>
       </div>
 
       <button class="feito" type="button" aria-pressed="false"><span class="box"></span>marcar como feito</button>
@@ -849,25 +864,25 @@ databricks experimental aitools tools discover-schema \
       <p class="rotulo">O CSV do dia chega</p>
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal · upload ao vivo</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>databricks fs cp data/lead_score_dados/raw/leads/leads_2026-11-23.csv dbfs:/Volumes/lh_ensaio05/landing/raw/leads/ --profile lead_score</code></pre>
+        <pre><code>databricks fs cp data/lead_score_dados/raw/leads/leads_2026-11-23.csv dbfs:/Volumes/leadscore/landing/raw/leads/ --profile leadscore
+databricks bundle run lh_leadscore_pipeline --profile leadscore</code></pre>
       </div>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">src/pipeline/01_bronze_leads_raw.sql</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>CREATE OR REFRESH STREAMING TABLE ${lead_score.catalog}.bronze.leads_raw (
-  CONSTRAINT recebido_em_valido EXPECT (recebido_em IS NOT NULL)
-)
+        <div class="code-head"><span class="code-tag">src/pipeline/bronze/leads.sql</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>-- ${volume_raw} vem da configuração do pipeline: /Volumes/leadscore/landing/raw
+CREATE OR REFRESH STREAMING TABLE bronze.leads_raw
+COMMENT 'Leads crus do Volume raw/leads (Auto Loader)'
 AS SELECT
   *,
-  _metadata.file_path AS _arquivo,
-  current_timestamp() AS _ingerido_em
+  _metadata.file_path  AS _arquivo,
+  current_timestamp()  AS _ingerido_em
 FROM STREAM read_files(
-  '/Volumes/${lead_score.catalog}/landing/raw/leads/',
+  '${volume_raw}/leads/',
   format            =&gt; 'csv',
   header            =&gt; true,
   multiLine         =&gt; true,
-  timestampFormat   =&gt; 'yyyy-MM-dd HH:mm:ss',
-  schemaHints       =&gt; 'lead_id STRING, telefone STRING, cnpj STRING, campanha STRING, mensagem STRING, recebido_em TIMESTAMP',
+  schemaHints       =&gt; 'lead_id STRING, telefone STRING, cnpj STRING, recebido_em TIMESTAMP',
   rescuedDataColumn =&gt; '_rescued_data'
 );</code></pre>
       </div>
@@ -886,14 +901,14 @@ FROM STREAM read_files(
         <pre><code>SELECT count(*)                            AS leads,
        count(DISTINCT _arquivo)            AS arquivos,
        count_if(_rescued_data IS NOT NULL) AS linhas_resgatadas
-FROM lh_ensaio05.bronze.leads_raw;
+FROM leadscore.bronze.leads_raw;
 <span class="res">-- resultado esperado: leads = 100 · arquivos = 1 · linhas_resgatadas = 2</span></code></pre>
       </div>
 
       <p class="rotulo">Onde olhar na interface</p>
       <ol class="ui-lista">
-        <li><span class="ui-caminho">Jobs &amp; Pipelines → lh_ensaio05_pipeline</span>: o grafo do Volume até a fila.</li>
-        <li><span class="ui-caminho">Catalog → lh_ensaio05 → bronze → leads_raw → Sample data</span>: as colunas <code>_arquivo</code>, <code>_ingerido_em</code> e <code>_rescued_data</code>.</li>
+        <li><span class="ui-caminho">Jobs &amp; Pipelines → [dev seu_usuario] lh_leadscore_pipeline</span>: o grafo do Volume até a fila.</li>
+        <li><span class="ui-caminho">Catalog → leadscore → bronze → leads_raw → Sample data</span>: as colunas <code>_arquivo</code>, <code>_ingerido_em</code> e <code>_rescued_data</code>.</li>
       </ol>
 
       <details class="prompt">
@@ -901,10 +916,10 @@ FROM lh_ensaio05.bronze.leads_raw;
         <div class="code">
           <div class="code-head"><span class="code-tag">prompt</span><button class="copy" type="button">copiar</button></div>
           <pre><code>Crie a camada bronze de um pipeline Lakeflow Declarativo em SQL (serverless) no bundle.
-Fontes: /Volumes/lh_ensaio05/landing/raw/ com as pastas leads/, empresas/ e historico/.
+Fontes: /Volumes/leadscore/landing/raw/ com as pastas leads/, empresas/ e historico/.
 Uma streaming table por fonte com Auto Loader (read_files em STREAM), header, multiLine,
 schemaHints com recebido_em TIMESTAMP e cnpj STRING, _rescued_data, e as colunas _arquivo e _ingerido_em.
-Não filtre nem corrija nada nesta camada. Um arquivo .sql por dataset em src/pipeline/.</code></pre>
+Não filtre nem corrija nada nesta camada. Um arquivo .sql por dataset em src/pipeline/bronze/.</code></pre>
         </div>
       </details>
 
@@ -933,27 +948,33 @@ Não filtre nem corrija nada nesta camada. Um arquivo .sql por dataset em src/pi
       <p>Na silver mora a regra de qualidade. Se a mesma pessoa mandou duas mensagens, ela ocuparia duas vagas na fila de 20; por isso a deduplicação usa o <strong>e-mail normalizado</strong> e mantém a <strong>mensagem mais recente</strong>. As regras de qualidade são <em>expectations</em>: a violação fica registrada no pipeline, mas o lead não some.</p>
 
       <div class="camadas">
-        <div class="camada c-silver"><h4>silver.leads</h4><p>E-mail em minúsculas e sem espaços, CNPJ só com dígitos e DV validado, <strong>1 linha por e-mail</strong>.</p></div>
+        <div class="camada c-silver"><h4>silver.leads_normalizados</h4><p>Streaming table, <strong>1 linha por envio</strong>: e-mail em minúsculas e sem espaços, CNPJ só com dígitos e DV validado, <code>msg_curta</code> e <code>data_arquivo</code>. É ela que alimenta a IA.</p></div>
         <div class="camada c-silver"><h4>silver.empresas</h4><p>Base cadastral por CNPJ: porte, segmento, UF.</p></div>
-        <div class="camada c-silver"><h4>silver.historico_empresa</h4><p>Oportunidades por CNPJ: ganhas, perdidas, abertas, produtos e <code>ja_cliente</code>.</p></div>
-        <div class="camada c-silver"><h4>silver.leads_enriquecidos</h4><p>Lead + empresa + histórico. A base da gold.</p></div>
+        <div class="camada c-silver"><h4>silver.historico_empresa</h4><p>Oportunidades por CNPJ: ganhas, <code>ja_cliente</code> e produtos já comprados (para o cross-sell).</p></div>
+        <div class="camada c-silver"><h4>silver.leads</h4><p>Materialized view: <strong>1 lead por e-mail</strong> (o envio mais recente) + empresa + histórico, com as expectations.</p></div>
       </div>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">src/pipeline/04_silver_leads.sql · a deduplicação</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>row_number() OVER (
-  PARTITION BY lower(regexp_replace(email, '[[:space:]]', ''))
-  ORDER BY recebido_em DESC NULLS LAST, lead_id DESC
-) = 1</code></pre>
+        <div class="code-head"><span class="code-tag">src/pipeline/silver/leads.sql · a deduplicação</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>WITH ultimos AS (
+  SELECT *
+  FROM silver.leads_normalizados   -- e-mail já normalizado: lower(regexp_replace(email, '\\s', ''))
+  QUALIFY row_number() OVER (
+    PARTITION BY email
+    ORDER BY recebido_em DESC NULLS LAST, _ingerido_em DESC, lead_id DESC
+  ) = 1
+)</code></pre>
       </div>
+
+      <p>O CNPJ é validado por funções SQL do Unity Catalog (<code>src/sql/udf_cnpj.sql</code>): <code>leadscore.silver.cnpj_normalizar</code> e <code>leadscore.silver.cnpj_valido</code>, com o cálculo de módulo 11 dos dois dígitos verificadores.</p>
 
       <p class="rotulo">Resultado</p>
       <div class="code">
-        <div class="code-head"><span class="code-tag">sql · sanidade da silver</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>SELECT count(*)                                          AS leads_unicos,
-       count(*) - count(DISTINCT email_norm)             AS emails_duplicados,
-       count_if(cnpj_norm IS NOT NULL AND NOT cnpj_valido) AS cnpj_invalidos
-FROM lh_ensaio05.silver.leads;
+        <div class="code-head"><span class="code-tag">sql · sanidade da silver · src/sql/verificacao/ca03_ca04_silver.sql</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>SELECT
+  (SELECT count(*) FROM leadscore.silver.leads)                                    AS leads_unicos,
+  (SELECT count(*) - count(DISTINCT email) FROM leadscore.silver.leads)            AS emails_duplicados,
+  (SELECT count_if(cnpj_valido = false) FROM leadscore.silver.leads_normalizados)  AS cnpj_invalidos;
 <span class="res">-- resultado esperado: leads_unicos = 96 · emails_duplicados = 0 · cnpj_invalidos = 2</span></code></pre>
       </div>
 
@@ -961,13 +982,15 @@ FROM lh_ensaio05.silver.leads;
         <summary>Prompt equivalente <small>claude code</small></summary>
         <div class="code">
           <div class="code-head"><span class="code-tag">prompt</span><button class="copy" type="button">copiar</button></div>
-          <pre><code>Crie a camada silver como materialized views em src/pipeline/:
-- silver.leads: email_norm (minúsculas, sem espaços), cnpj_norm só com dígitos e cnpj_valido pelo
-  dígito verificador, data_arquivo extraída do nome do arquivo, deduplicação por email_norm mantendo
-  a mensagem mais recente. Expectations: e-mail válido e CNPJ válido quando informado.
-- silver.empresas: CNPJ normalizado, 1 linha por CNPJ.
-- silver.historico_empresa: oportunidades agregadas por CNPJ (ganhas, perdidas, abertas, produtos, ja_cliente).
-- silver.leads_enriquecidos: lead + empresa + histórico por CNPJ válido.</code></pre>
+          <pre><code>Crie a camada silver em src/pipeline/silver/:
+- silver.leads_normalizados (STREAMING TABLE sobre STREAM(bronze.leads_raw)): e-mail em minúsculas e sem
+  espaços, CNPJ só com dígitos e cnpj_valido (funções SQL de src/sql/udf_cnpj.sql), msg_curta (< 5 caracteres)
+  e data_arquivo extraída do nome do arquivo. Uma linha por envio: ela alimenta a IA incremental.
+- silver.empresas e silver.historico_empresa (MATERIALIZED VIEW): 1 linha por CNPJ; histórico com ganhas,
+  ja_cliente e produtos já comprados.
+- silver.leads (MATERIALIZED VIEW): 1 lead por e-mail mantendo o envio mais recente, LEFT JOIN com empresa e
+  histórico por CNPJ válido. Expectations: lead_id e e-mail presentes (drop); formato de e-mail, CNPJ válido
+  e recebido_em presentes (warn).</code></pre>
         </div>
       </details>
 
@@ -1027,7 +1050,7 @@ FROM lh_ensaio05.silver.leads;
     }',
     map('version', '2.1')
   ):response AS entidades
-FROM lh_ensaio05.bronze.leads_raw
+FROM leadscore.bronze.leads_raw
 WHERE lead_id IN ('L20261123-0089', 'L20261123-0009', 'L20261123-0003');</code></pre>
       </div>
 
@@ -1044,7 +1067,7 @@ WHERE lead_id IN ('L20261123-0089', 'L20261123-0009', 'L20261123-0003');</code><
       </div>
 
       <h3>No pipeline: a IA roda uma vez por lead</h3>
-      <p><code>gold.leads_ia</code> é uma <strong>streaming table</strong> sobre a bronze: cada lead novo passa pela IA uma única vez. Mensagem com menos de 5 caracteres vira spam sem chamar a IA, e o <code>ai_extract</code> só roda em compra e avaliando.</p>
+      <p><code>gold.leads_ia</code> (<code>src/pipeline/gold/leads_ia.sql</code>) é uma <strong>streaming table</strong> sobre <code>silver.leads_normalizados</code>: cada envio novo passa pela IA uma única vez. Mensagem com menos de 5 caracteres vira spam sem chamar a IA; as demais passam pelo <code>ai_classify</code> e pelo <code>ai_extract</code>. A tabela guarda a versão da função e o retorno bruto, para auditoria.</p>
 
       <div class="numeros">
         <div class="numero quente"><b>26</b><span>compra imediata</span></div>
@@ -1057,11 +1080,11 @@ WHERE lead_id IN ('L20261123-0089', 'L20261123-0009', 'L20261123-0003');</code><
         <summary>Prompt equivalente <small>claude code</small></summary>
         <div class="code">
           <div class="code-head"><span class="code-tag">prompt</span><button class="copy" type="button">copiar</button></div>
-          <pre><code>Crie gold.leads_ia como STREAMING TABLE sobre STREAM(bronze.leads_raw), para a IA rodar só em lead novo.
-Use ai_classify (version 2.1) com os rótulos compra_imediata, avaliando, suporte e spam, cada um com a
-descrição de negócio do PRD 2.5, e ai_extract (version 2.1) com produto, qtd_licencas, prazo,
-orcamento_aprovado, cargo e concorrente_citado, só para compra_imediata e avaliando.
-Mensagem nula ou com menos de 5 caracteres vira spam sem chamar a IA. Registre a versão da função.</code></pre>
+          <pre><code>Crie gold.leads_ia como STREAMING TABLE sobre STREAM(silver.leads_normalizados), para a IA rodar só em
+envio novo. Use ai_classify (version 2.1) com os rótulos compra_imediata, avaliando, suporte e spam, cada um
+com a descrição de negócio literal do PRD 2.5, e ai_extract (version 2.1) com produto, qtd_licencas, prazo,
+orcamento_aprovado, cargo e concorrente_citado. Mensagem com menos de 5 caracteres (msg_curta) vira spam
+sem chamar a IA. Grave a versão da função, o erro (se houver) e o retorno bruto para auditoria.</code></pre>
         </div>
       </details>
 
@@ -1107,7 +1130,7 @@ Mensagem nula ou com menos de 5 caracteres vira spam sem chamar a IA. Registre a
       <div class="code">
         <div class="code-head"><span class="code-tag">sql · topo da fila</span><button class="copy" type="button">copiar</button></div>
         <pre><code>SELECT posicao, vendedor, lead_score, nome, empresa, motivo, proximo_passo
-FROM lh_ensaio05.gold.fila_do_dia
+FROM leadscore.gold.fila_do_dia
 ORDER BY posicao
 LIMIT 5;</code></pre>
       </div>
@@ -1117,21 +1140,21 @@ LIMIT 5;</code></pre>
         <table>
           <thead><tr><th>#</th><th>Vendedor</th><th>Nota</th><th>Lead</th><th>O que pediu</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>Ana Ribeiro</td><td class="num"><strong>100</strong></td><td>Roberto Almeida</td><td>200 licenças do Atlas Gestão até dezembro</td></tr>
-            <tr><td>2</td><td>Bruno Carvalho</td><td class="num"><strong>100</strong></td><td>Paulo Gomes</td><td>120 licenças do Atlas Gestão até janeiro</td></tr>
-            <tr><td>3</td><td>Carla Mendes</td><td class="num">96</td><td>Carla Santos</td><td>Atlas Fiscal até este trimestre</td></tr>
-            <tr><td>4</td><td>Diego Rocha</td><td class="num">96</td><td>Henrique Silva</td><td>Atlas Gestão até esta semana</td></tr>
-            <tr><td>5</td><td>Ana Ribeiro</td><td class="num">96</td><td>Thiago Pereira</td><td>Atlas Fiscal até dezembro</td></tr>
+            <tr><td>1</td><td>Ana</td><td class="num"><strong>100</strong></td><td>Paulo Gomes</td><td>120 licenças do Atlas Gestão até janeiro (mensagem em inglês, pegadinha P5)</td></tr>
+            <tr><td>2</td><td>Bruno</td><td class="num"><strong>100</strong></td><td>Roberto Almeida</td><td>200 licenças do Atlas Gestão até dezembro (o lead herói)</td></tr>
+            <tr><td>3</td><td>Carla</td><td class="num">96</td><td>Carla Santos</td><td>Atlas Fiscal até este trimestre</td></tr>
+            <tr><td>4</td><td>Diego</td><td class="num">96</td><td>Henrique Silva</td><td>Atlas Gestão até esta semana</td></tr>
+            <tr><td>5</td><td>Ana</td><td class="num">96</td><td>Thiago Pereira</td><td>Atlas Fiscal até dezembro</td></tr>
           </tbody>
         </table>
       </div>
 
-      <p>O lead herói chegou às <strong>17h48</strong>: pela ordem de chegada seria o 89º. Com a nota, é o <strong>1º</strong>. Motivo, gerado por regra: <em>“Pediu 200 licenças do Atlas Gestão até dezembro · orçamento aprovado · usa OmniERP · Diretor Financeiro · empresa de porte grande · já é cliente (cross-sell)”</em>. Próximo passo: <strong>“Ligar hoje e enviar proposta”</strong>.</p>
+      <p>O lead herói chegou às <strong>17h48</strong>: pela ordem de chegada seria o 89º. Com a nota, é o <strong>2º</strong>: empata em 100 com Paulo Gomes, que chegou antes (às 10h37, o critério de desempate). Motivo, gerado por regra: <em>“Pediu 200 licenças do Atlas Gestão até dezembro · empresa grande · orçamento aprovado · já é cliente · usa OmniERP”</em>. Próximo passo: <strong>“Ligar hoje e enviar proposta”</strong>.</p>
 
       <p class="rotulo">Critérios de aceite</p>
       <ul class="aceite feitos">
         <li>CA-08: nenhum spam ou suporte na fila do dia.</li>
-        <li>CA-09: 20 leads, 5 por vendedor, ordenados por nota, com os 4 componentes, e o herói em 1º.</li>
+        <li>CA-09: 20 leads, 5 por vendedor, ordenados por nota, com os 4 componentes, e o herói entre os primeiros (2º).</li>
       </ul>
 
       <aside class="fala">
@@ -1156,13 +1179,13 @@ LIMIT 5;</code></pre>
         <div class="code-head"><span class="code-tag">sql · prova do incremental</span><button class="copy" type="button">copiar</button></div>
         <pre><code>SELECT count(*)                      AS leads_com_ia,
        count(DISTINCT processado_em) AS lotes_de_ia
-FROM lh_ensaio05.gold.leads_ia;
+FROM leadscore.gold.leads_ia;
 <span class="res">-- resultado esperado: leads_com_ia = 100 · lotes_de_ia = 1</span></code></pre>
       </div>
 
       <p class="rotulo">Critério de aceite</p>
-      <ul class="aceite">
-        <li>CA-12: uma segunda execução sem arquivos novos faz 0 chamadas de IA (o número de lotes continua 1).</li>
+      <ul class="aceite feitos">
+        <li>CA-12: uma segunda execução sem arquivos novos faz 0 chamadas de IA: depois da reexecução, continuam 100 leads e 1 lote, com o mesmo <code>processado_em</code>.</li>
       </ul>
 
       <button class="feito" type="button" aria-pressed="false"><span class="box"></span>marcar como feito</button>
@@ -1189,7 +1212,7 @@ FROM lh_ensaio05.gold.leads_ia;
           <tbody>
             <tr><td>1</td><td>Quantos leads de compra imediata chegaram hoje?</td><td><strong>26</strong></td></tr>
             <tr><td>2</td><td>Qual canal trouxe mais leads de compra imediata?</td><td>Indicação (10) e LinkedIn (9)</td></tr>
-            <tr><td>3</td><td>Quais leads citaram concorrente?</td><td>3 leads, incluindo o herói (OmniERP)</td></tr>
+            <tr><td>3</td><td>Quais leads citaram concorrente?</td><td>4 leads, com o herói (OmniERP) no topo</td></tr>
             <tr><td>4</td><td>Quantos leads da minha fila eu já contatei?</td><td>Depende do que foi marcado na demo</td></tr>
             <tr><td>5</td><td><strong>Quais leads de compra imediata ficaram fora da fila de hoje?</strong></td><td><strong>6 leads</strong>, ordenados por nota</td></tr>
           </tbody>
@@ -1200,17 +1223,25 @@ FROM lh_ensaio05.gold.leads_ia;
         <summary>Prompt equivalente <small>claude code</small></summary>
         <div class="code">
           <div class="code-head"><span class="code-tag">prompt</span><button class="copy" type="button">copiar</button></div>
-          <pre><code>Crie o Genie Space "Lead Score · Agente Comercial" sobre lh_ensaio05.gold.leads_classificados,
+          <pre><code>Crie o Genie Space "Lead Score · Agente Comercial" sobre leadscore.gold.leads_classificados,
 gold.fila_do_dia e gold.feedback_contatos, no SQL Warehouse serverless. Instruções em português:
 "hoje" é max(data_arquivo) (nunca current_date), "compra imediata" é intencao = 'compra_imediata',
-"fora da fila" é compra_imediata LEFT ANTI JOIN fila_do_dia. Inclua as 5 perguntas do roteiro
+"fora da fila" é compra imediata cujo lead_id não está em fila_do_dia. Inclua as 5 perguntas do roteiro
 do PRD 2.8 como perguntas sugeridas, cada uma com um SQL de exemplo.</code></pre>
         </div>
       </details>
 
+      <div class="code">
+        <div class="code-head"><span class="code-tag">terminal · o space versionado no repositório</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>python src/genie/gerar_space.py &gt; src/genie/lead_score_space.json
+databricks genie create-space 4c2bc55088722e76 "$(cat src/genie/lead_score_space.json)" \
+  --title "Lead Score · Agente Comercial" --profile leadscore
+python src/genie/testar_perguntas.py &lt;SPACE_ID&gt; --profile leadscore</code></pre>
+      </div>
+
       <p class="rotulo">Critério de aceite</p>
-      <ul class="aceite">
-        <li>CA-11: o agente responde corretamente as perguntas do roteiro (1 e 5 conferidas no ensaio: 26 e 6).</li>
+      <ul class="aceite feitos">
+        <li>CA-11: o agente responde corretamente as 5 perguntas do roteiro, pela API e pelo app (26 · Indicação 10 e LinkedIn 9 · 4 concorrentes · contatados · 6 fora da fila).</li>
       </ul>
 
       <aside class="fala">
@@ -1231,8 +1262,8 @@ do PRD 2.8 como perguntas sugeridas, cada uma com um SQL de exemplo.</code></pre
       <p class="rotulo">Roteiro de cliques</p>
       <ol class="ui-lista">
         <li><span class="ui-caminho">Visão do Gestor</span>: o card azul diz <strong>20 leads na fila hoje · 26 de compra imediata</strong>, com 6 fora por falta de capacidade. Abaixo, os KPIs (100 recebidos → 96 únicos → 20 na fila → contatados), o funil e a intenção por canal.</li>
-        <li><span class="ui-caminho">Fila do Dia → Vendedor: Ana Ribeiro</span>: 5 cards com nota, os 4 componentes, motivo, entidades extraídas, mensagem e próximo passo.</li>
-        <li>No 1º card (Roberto Almeida, nota 100), clique em <strong>Marcar como contatado</strong>: o card ganha o selo “Contatado”.</li>
+        <li><span class="ui-caminho">Fila do Dia → Vendedor: Bruno</span>: 5 cards com nota, os 4 componentes, motivo, entidades extraídas, mensagem e próximo passo.</li>
+        <li>No 1º card da Bruno (Roberto Almeida, o herói, nota 100), clique em <strong>Marcar como contatado</strong>: o card ganha o selo “Contatado”.</li>
         <li>Volte à Visão do Gestor: o KPI <em>Contatados</em> já mostra 1.</li>
         <li><span class="ui-caminho">Agente</span>: faça as perguntas do roteiro e feche com “quais leads de compra imediata ficaram fora da fila de hoje?” (6).</li>
       </ol>
@@ -1247,7 +1278,8 @@ do PRD 2.8 como perguntas sugeridas, cada uma com um SQL de exemplo.</code></pre
         <summary>Prompt equivalente <small>claude code</small></summary>
         <div class="code">
           <div class="code-head"><span class="code-tag">prompt</span><button class="copy" type="button">copiar</button></div>
-          <pre><code>Crie o Databricks App lead-score-app em AppKit (React/TS) com os plugins analytics e genie.
+          <pre><code>Crie o Databricks App leadscore-app em AppKit (React/TS) com os plugins analytics e genie, em app/,
+declarado no bundle raiz (resources/leadscore.app.yml).
 Telas: Visão do Gestor (card do dia, KPIs do funil, funil e intenção por canal), Fila do Dia
 (filtro por vendedor, cards com nota, 4 componentes, motivo, entidades, próximo passo e botão
 "Marcar como contatado" que grava em gold.feedback_contatos) e Agente (GenieChat com as perguntas
@@ -1257,8 +1289,8 @@ a única rota custom é o POST do contato.</code></pre>
       </details>
 
       <p class="rotulo">Critério de aceite</p>
-      <ul class="aceite">
-        <li>CA-10: o vendedor vê os seus 5 leads, marca um como contatado e o registro aparece em <code>feedback_contatos</code>.</li>
+      <ul class="aceite feitos">
+        <li>CA-10: o vendedor vê os seus 5 leads, marca um como contatado e o registro aparece em <code>feedback_contatos</code> (testado: <code>L20261123-0089 · Bruno · contatado</code>).</li>
       </ul>
 
       <aside class="fala">
@@ -1276,11 +1308,13 @@ a única rota custom é o POST do contato.</code></pre>
         <p class="bloco-goal">Mostrar, com o resultado real, que o pipeline faz o que promete.</p>
       </div>
 
-      <p>O <code>src/validacao/validacao.sql</code> confere os critérios numa única consulta. No ensaio, todos ficaram verdes:</p>
+      <p>Os critérios viram testes: <code>tests/test_aceite.py</code> (pytest + Databricks Connect) confere CA-01 a CA-09 contra as tabelas publicadas, e <code>src/sql/verificacao/</code> tem uma consulta por marco. No projeto, ficaram assim:</p>
 
       <div class="code">
         <div class="code-head"><span class="code-tag">terminal · validação</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>py -I scripts/sql.py src/validacao/validacao.sql</code></pre>
+        <pre><code>DATABRICKS_CONFIG_PROFILE=leadscore uv run pytest tests/test_aceite.py
+<span class="res">-- 10 passed</span>
+databricks experimental aitools tools query --file src/sql/verificacao/ca05_ca12_gold.sql --profile leadscore</code></pre>
       </div>
 
       <div class="tabela-wrap">
@@ -1295,10 +1329,10 @@ a única rota custom é o POST do contato.</code></pre>
             <tr><td>CA-06</td><td>Pegadinhas ≥ 4 de 5</td><td>5 de 5</td><td><span class="st ok">ok</span></td></tr>
             <tr><td>CA-07</td><td>Entidades do herói</td><td>Atlas Gestão · 200 · dezembro · orçamento · Diretor Financeiro · OmniERP</td><td><span class="st ok">ok</span></td></tr>
             <tr><td>CA-08</td><td>Sem spam/suporte na fila</td><td>0</td><td><span class="st ok">ok</span></td></tr>
-            <tr><td>CA-09</td><td>Fila: 20 leads, 5 por vendedor, herói em 1º</td><td>20 · 5/5 · posição 1</td><td><span class="st ok">ok</span></td></tr>
-            <tr><td>CA-10</td><td>Marcar como contatado</td><td>Feito ao vivo no app</td><td><span class="st pend">ao vivo</span></td></tr>
-            <tr><td>CA-11</td><td>Agente responde o roteiro</td><td>Perguntas 1 (26) e 5 (6) conferidas</td><td><span class="st pend">parcial</span></td></tr>
-            <tr><td>CA-12</td><td>0 chamadas de IA no reprocesso</td><td>100 leads, 1 lote de IA</td><td><span class="st pend">a medir</span></td></tr>
+            <tr><td>CA-09</td><td>Fila: 20 leads, 5 por vendedor, herói entre os primeiros</td><td>20 · 5 × 4 · herói em 2º (empate em 100)</td><td><span class="st ok">ok</span></td></tr>
+            <tr><td>CA-10</td><td>Marcar como contatado</td><td>Registro em <code>feedback_contatos</code> e KPI atualizado</td><td><span class="st ok">ok</span></td></tr>
+            <tr><td>CA-11</td><td>Agente responde o roteiro</td><td>5 de 5 perguntas, pela API e pelo app</td><td><span class="st ok">ok</span></td></tr>
+            <tr><td>CA-12</td><td>0 chamadas de IA no reprocesso</td><td>100 leads, 1 lote de IA após reexecutar</td><td><span class="st ok">ok</span></td></tr>
             <tr><td>CA-13</td><td>Do upload ao app em ≤ 15 min</td><td>Cronometrado na demo</td><td><span class="st pend">a medir</span></td></tr>
           </tbody>
         </table>
@@ -1342,41 +1376,56 @@ a única rota custom é o POST do contato.</code></pre>
       <div class="bloco-head">
         <div class="bloco-topo"><span class="bloco-num">A</span><span class="tipo">anexo</span></div>
         <h2>Anexo: todos os comandos.</h2>
-        <p class="bloco-goal">Na ordem em que o projeto foi montado. Deploy sempre com <code>-t prod</code>.</p>
+        <p class="bloco-goal">Na ordem em que o projeto foi montado, dentro de <code>lh_leadscore</code>, sempre com <code>--profile leadscore</code> (target <code>dev</code>).</p>
       </div>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">terminal · bundle</span><button class="copy" type="button">copiar</button></div>
-        <pre><code># validar e publicar (schemas, volumes, pipeline e app)
-databricks bundle validate -t prod --profile lead_score
-databricks bundle deploy   -t prod --profile lead_score
+        <div class="code-head"><span class="code-tag">terminal · 1. ambiente</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>databricks auth login --host https://SEU-WORKSPACE.cloud.databricks.com --profile leadscore
+uv python pin 3.12 &amp;&amp; uv venv --seed &amp;&amp; uv sync --dev
+databricks aitools install
 
-# rodar o pipeline medalhão
-databricks bundle run lead_score_pipeline -t prod --profile lead_score
-
-# publicar uma nova versão do app
-databricks bundle run lh_ensaio_app -t prod --profile lead_score
-databricks apps get lh-ensaio --profile lead_score</code></pre>
+# catálogo, schemas, volumes e funções de CNPJ (SQL, fora do bundle)
+databricks experimental aitools tools query --file src/sql/setup_ambiente.sql --profile leadscore
+databricks experimental aitools tools query --file src/sql/udf_cnpj.sql --profile leadscore
+databricks experimental aitools tools query --file src/sql/verificacao/t0_4_ai_functions.sql --profile leadscore</code></pre>
       </div>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">terminal · dados no volume</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>databricks fs cp -r data/landing dbfs:/Volumes/lh_ensaio/bronze/landing/ --profile lead_score
-databricks fs ls dbfs:/Volumes/lh_ensaio/bronze/landing/ --profile lead_score</code></pre>
+        <div class="code-head"><span class="code-tag">terminal · 2. dados de apoio no volume</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>databricks fs cp data/lead_score_dados/raw/empresas/empresas_2026-11-23.csv dbfs:/Volumes/leadscore/landing/raw/empresas/ --profile leadscore
+databricks fs cp data/lead_score_dados/raw/historico/oportunidades_2026-11-23.csv dbfs:/Volumes/leadscore/landing/raw/historico/ --profile leadscore
+databricks fs cp data/lead_score_dados/gabarito/intencao.csv dbfs:/Volumes/leadscore/landing/gabarito/ --profile leadscore
+databricks fs cp data/lead_score_dados/gabarito/entidades.csv dbfs:/Volumes/leadscore/landing/gabarito/ --profile leadscore</code></pre>
       </div>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">sql · catálogo (uma vez, Default Storage)</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>CREATE CATALOG IF NOT EXISTS lh_ensaio
-COMMENT 'Lakehouse ensaio - camadas bronze/silver/gold';</code></pre>
+        <div class="code-head"><span class="code-tag">terminal · 3. bundle e pipeline</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>databricks bundle validate --strict --profile leadscore
+databricks bundle deploy --profile leadscore
+databricks experimental aitools tools query --file src/sql/feedback_contatos.sql --profile leadscore
+
+# o CSV do dia (ao vivo) e o pipeline medalhão
+databricks fs cp data/lead_score_dados/raw/leads/leads_2026-11-23.csv dbfs:/Volumes/leadscore/landing/raw/leads/ --profile leadscore
+databricks bundle run lh_leadscore_pipeline --profile leadscore</code></pre>
       </div>
 
       <div class="code">
-        <div class="code-head"><span class="code-tag">sql · permissões do service principal do app</span><button class="copy" type="button">copiar</button></div>
-        <pre><code>-- troque pelo service_principal_client_id de: databricks apps get lh-ensaio
-GRANT USE CATALOG ON CATALOG lh_ensaio TO `&lt;client-id-do-app&gt;`;
-GRANT USE SCHEMA, SELECT ON CATALOG lh_ensaio TO `&lt;client-id-do-app&gt;`;
-GRANT MODIFY ON TABLE lh_ensaio.gold.feedback_contatos TO `&lt;client-id-do-app&gt;`;</code></pre>
+        <div class="code-head"><span class="code-tag">terminal · 4. agente e app</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>python src/genie/gerar_space.py &gt; src/genie/lead_score_space.json
+databricks genie create-space 4c2bc55088722e76 "$(cat src/genie/lead_score_space.json)" --title "Lead Score · Agente Comercial" --profile leadscore
+
+databricks bundle run leadscore_app --profile leadscore
+databricks apps get leadscore-leadscorews --profile leadscore -o json   # service_principal_client_id
+databricks experimental aitools tools query --file src/sql/grants_app.sql --param app_sp=&lt;client-id-do-app&gt; --profile leadscore
+databricks bundle run leadscore_app --profile leadscore</code></pre>
+      </div>
+
+      <div class="code">
+        <div class="code-head"><span class="code-tag">terminal · 5. validação</span><button class="copy" type="button">copiar</button></div>
+        <pre><code>DATABRICKS_CONFIG_PROFILE=leadscore uv run pytest tests/test_aceite.py
+python src/genie/testar_perguntas.py &lt;SPACE_ID&gt; --profile leadscore
+cd app &amp;&amp; databricks apps validate --profile leadscore</code></pre>
       </div>
 
       <button class="feito" type="button" aria-pressed="false"><span class="box"></span>marcar como feito</button>
@@ -1393,15 +1442,16 @@ GRANT MODIFY ON TABLE lh_ensaio.gold.feedback_contatos TO `&lt;client-id-do-app&
         <table>
           <thead><tr><th>Sintoma</th><th>Causa</th><th>Solução</th></tr></thead>
           <tbody>
-            <tr><td><code>catalogs create</code>: “Metastore storage root URL does not exist”</td><td>A conta usa Default Storage</td><td><code>CREATE CATALOG</code> via SQL Warehouse (o pre-flight já faz)</td></tr>
-            <tr><td>Schemas saem como <code>dev_&lt;usuario&gt;_bronze</code></td><td><code>mode: development</code> prefixa recursos do UC</td><td>Target sem <code>mode: development</code></td></tr>
-            <tr><td>Pipeline: erro 409 no deploy</td><td>Já existe pipeline com o mesmo nome</td><td>Nome único por projeto (<code>lh_ensaio05_pipeline</code>)</td></tr>
-            <tr><td>Build do app: <code>INSUFFICIENT_PERMISSIONS</code></td><td>O service principal do app não tem acesso ao catálogo</td><td>Grants do SP (o pre-flight aplica)</td></tr>
-            <tr><td>Git Bash troca <code>/api/...</code> por um caminho do Windows</td><td>Conversão automática de caminhos do MSYS</td><td><code>export MSYS_NO_PATHCONV=1</code></td></tr>
-            <tr><td><code>npm run typegen</code> fica OFFLINE</td><td>O <code>.env</code> do app não foi carregado</td><td><code>set -a; . ./.env; set +a; npm run typegen</code></td></tr>
-            <tr><td>Um “false” aparece como verdadeiro no app</td><td>O warehouse devolve booleanos e números como texto</td><td>Normalizar com <code>v === true || v === 'true'</code> e <code>Number(...)</code></td></tr>
+            <tr><td><code>PARSE_SYNTAX_ERROR</code> ao rodar um <code>.sql</code> com vários comandos pela CLI</td><td><code>aitools tools query</code> executa um statement por chamada</td><td>Envolver em <code>BEGIN … END;</code> (SQL scripting), como em <code>src/sql/setup_ambiente.sql</code></td></tr>
+            <tr><td>Schemas saem como <code>dev_&lt;usuario&gt;_bronze</code></td><td><code>mode: development</code> prefixa recursos do UC declarados no bundle</td><td>Criar catálogo, schemas e volumes por SQL, fora do bundle</td></tr>
+            <tr><td>Build do app: <code>INSUFFICIENT_PERMISSIONS</code> (USE CATALOG)</td><td>O service principal do app não tem acesso ao catálogo</td><td><code>src/sql/grants_app.sql</code> com o <code>service_principal_client_id</code> e novo <code>bundle run leadscore_app</code></td></tr>
+            <tr><td>App não reimplanta após o deploy</td><td>O recurso do app não mudou, só o código</td><td><code>databricks bundle run leadscore_app</code></td></tr>
+            <tr><td><code>npm run typegen</code> fica OFFLINE</td><td>O <code>.env</code> do app não foi carregado</td><td><code>set -a; . ./.env; set +a; npx appkit generate-types --wait</code></td></tr>
+            <tr><td>A fila mostra “20 de 20 contatados” sem ninguém ter clicado</td><td>O warehouse devolve booleanos como texto, e <code>"false"</code> conta como verdadeiro em JS</td><td>Normalizar com <code>v === true || v === 'true'</code> (e <code>Number(...)</code> para números)</td></tr>
+            <tr><td>Banner e barras cinza no modo escuro do sistema</td><td>O tema do AppKit usa <code>:root:not(.light)</code>, mais específico que <code>:root</code></td><td>O app sempre aplica <code>.light</code> ou <code>.dark</code> e sobrescreve em <code>:root.dark</code></td></tr>
+            <tr><td>Contato marcado não aparece no gestor</td><td>Cache de 1 h das queries do analytics</td><td>Parâmetro <code>atualizacao</code> que muda a cada minuto e a cada contato</td></tr>
             <tr><td>O app pede login e consentimento</td><td>Escopo <code>dashboards.genie</code> (OBO do agente)</td><td>Aceitar uma vez antes da live</td></tr>
-            <tr><td>Toda pergunta sobre “hoje” responde 0</td><td>O Genie usou <code>current_date()</code></td><td>Instrução “hoje = <code>max(data_arquivo)</code>” no space</td></tr>
+            <tr><td>Toda pergunta sobre “hoje” responde 0</td><td>O Genie usaria <code>current_date()</code></td><td>Instrução “hoje = <code>max(data_arquivo)</code>” no space</td></tr>
           </tbody>
         </table>
       </div>

@@ -6,13 +6,13 @@
 ---
 
 ## T5.1 · Alinhar a apresentação aos nomes do projeto
-- Status: [ ] pendente
+- Status: [x] concluída
 - Requisitos: — · Aceite: —
 - Depende de: M3 concluído (nomes finais de tabelas/pipeline)
 - Arquivos: `apresentacao/lead_score.html`
 - Fazer: trocar `lh_ensaio05` → `leadscore`, `lh_ensaio05_pipeline` → `lh_leadscore_pipeline`, `--profile lead_score` → `--profile leadscore`; remover `bash scripts/preflight.sh` (usar os passos do M0); conferir nomes de tabelas citados (ex.: `gold.leads_ia`) com o que foi implementado.
 - Verificar: `grep -n "ensaio05\|preflight\|lead_score\b" apresentacao/lead_score.html` sem ocorrências indevidas.
-- Evidência:
+- Evidência: 2026-11-26 · lead_score.html refatorado: catálogo leadscore, profile leadscore, repo leadscore, bundle lh_leadscore (target dev, sem -t prod), setup por src/sql/*.sql no lugar do preflight, warehouse 4c2bc55088722e76, app leadscore-leadscorews, objetos Silver/Gold reais, top 5 real (herói em 2º), CA-09..CA-12 atualizados, anexos A e B com os comandos e erros deste projeto. grep sem ocorrências de ensaio05/lh_ensaio/preflight/-t prod; página renderiza (a exceção no console já existia antes).
 
 ## T5.2 · Roteiro de reset da demo
 - Status: [ ] pendente
@@ -43,5 +43,5 @@
 ---
 
 ## Checklist do marco
-- [ ] T5.1 · [ ] T5.2 · [ ] T5.3 · [ ] T5.4
+- [x] T5.1 · [ ] T5.2 · [ ] T5.3 · [ ] T5.4
 - [ ] Portão 3
