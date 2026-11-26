@@ -1,17 +1,17 @@
-# Lead Score V3 · dados sintéticos (projeto lh_ensaio05)
+# Lead Score V3 · dados sintéticos (projeto lh_leadscore)
 
 Gerados por `gerar_csvs.py --data 2026-11-23` (seed fixa), saída em `lead_score_dados/`. Para outro dia:
 `python gerar_csvs.py --data AAAA-MM-DD` (mesma estrutura, datas e nomes de arquivo atualizados).
 
-## Onde subir (catálogo `lh_ensaio05`)
+## Onde subir (catálogo `leadscore`)
 | Pasta local | Destino no Volume | Quando |
 |---|---|---|
-| `lead_score_dados/raw/empresas/` | `/Volumes/lh_ensaio05/landing/raw/empresas/` | antes da demo (pre-flight) |
-| `lead_score_dados/raw/historico/` | `/Volumes/lh_ensaio05/landing/raw/historico/` | antes da demo (pre-flight) |
-| `lead_score_dados/raw/leads/` | `/Volumes/lh_ensaio05/landing/raw/leads/` | **ao vivo** |
-| `lead_score_dados/gabarito/` | `/Volumes/lh_ensaio05/landing/gabarito/` (fora do `raw`) | antes da demo (pre-flight) |
+| `lead_score_dados/raw/empresas/` | `/Volumes/leadscore/landing/raw/empresas/` | antes da demo (pre-flight) |
+| `lead_score_dados/raw/historico/` | `/Volumes/leadscore/landing/raw/historico/` | antes da demo (pre-flight) |
+| `lead_score_dados/raw/leads/` | `/Volumes/leadscore/landing/raw/leads/` | **ao vivo** |
+| `lead_score_dados/gabarito/` | `/Volumes/leadscore/landing/gabarito/` (fora do `raw`) | antes da demo (pre-flight) |
 
-O `scripts/preflight.sh` cria o catálogo, os schemas e os volumes e sobe empresas, histórico e gabarito.
+Na etapa de pre-flight (M0) são criados o catálogo, os schemas e os volumes, e sobem empresas, histórico e gabarito.
 
 > `data/gabarito/` é de uma geração antiga (2026-11-22, IDs `L20261122-*`) e **não** é usada. O gabarito
 > que bate com os CSVs é `lead_score_dados/gabarito/`.
